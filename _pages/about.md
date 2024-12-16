@@ -1,9 +1,9 @@
 ---
 title: About
-author: Tao He
-date: 2022-02-04
-category: Jekyll
+author: Jean
+date: 2024-12-16
+category: Nothing
 layout: post
 ---
 
-This is an about page.
+个人学习记录.
