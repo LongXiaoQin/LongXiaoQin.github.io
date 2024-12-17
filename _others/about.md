@@ -1,9 +1,9 @@
 ---
 title: About others
-author: Tao He
-date: 2022-02-04
-category: Jekyll
+author: Jean
+date: 2024-12-17
+category: 其他
 layout: post
 ---
 
-This is an about page for "others" in the collections.
+这里是知识荒漠～.
