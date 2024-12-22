@@ -6,4 +6,4 @@ category: 其他
 layout: post
 ---
 
-This is an contact page.
+～.
