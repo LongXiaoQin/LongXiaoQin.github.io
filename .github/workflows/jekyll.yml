@@ -38,7 +38,7 @@ jobs:
       - name: Install Ruby using ruby-build
         run: |
           # 安装 ruby-build
-          git clone https://github.com/rbenv/ruby-build.git /tmp/ruby-build
+          sudo git clone https://github.com/rbenv/ruby-build.git /tmp/ruby-build
           /tmp/ruby-build/install.sh
 
           # 安装所需版本的 Ruby (3.1.4)
