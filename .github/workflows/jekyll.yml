@@ -38,11 +38,11 @@ jobs:
       - name: Install ruby-build
         run: |
           git clone https://github.com/rbenv/ruby-build.git $HOME/ruby-build
-          $HOME/ruby-build/install.sh
+          $HOME/ruby-build/install.sh --prefix=$HOME/.ruby-build
 
       - name: Install Ruby 3.1.4
         run: |
-          $HOME/ruby-build/bin/ruby-build 3.1.4 $HOME/.rubies/ruby-3.1.4
+          $HOME/.ruby-build/bin/ruby-build 3.1.4 $HOME/.rubies/ruby-3.1.4
           touch $HOME/.rubies/ruby-3.1.4/x64.complete
 
       - name: Display Ruby version
