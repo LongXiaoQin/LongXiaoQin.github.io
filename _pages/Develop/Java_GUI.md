@@ -194,7 +194,7 @@ public class TestGridLayout {
 
 #### 综合应用
 
-![image-20241222172330871](./Java_GUI.assets/image-20241222172330871.png)
+![image-20241222172330871](../../assets/pages/image-20241222172330871.png)
 
 ```java
 import java.awt.*;
