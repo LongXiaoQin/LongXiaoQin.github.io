@@ -194,7 +194,7 @@ public class TestGridLayout {
 
 #### 综合应用
 
-![image-20241222172330871](https://github.com/LongXiaoQin/LongXiaoQin.github.io/blob/master/_pages/Develop/Java_GUI.assets/image-20241222172330871.png)
+![image-20241222172330871](./Java_GUI.assets/image-20241222172330871.png)
 
 ```java
 import java.awt.*;
