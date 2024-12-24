@@ -251,3 +251,76 @@ public class TestExercise {
 
 ### 4.事件监听
 
+```java
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class TestActionEvent {
+    public static void main(String[] args) {
+        Frame frame = new Frame();
+
+        Button button = new Button("submit");
+        MyActionListener myActionListener = new MyActionListener();
+        button.addActionListener(myActionListener);
+
+        frame.add(button);
+        frame.setBounds(100, 100, 100,100);
+        windowClose(frame);
+        frame.setVisible(true);
+    }
+
+    private static void windowClose(Frame frame){
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+}
+
+
+class MyActionListener implements ActionListener {
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("aaaaa");
+    }
+}
+```
+
+```java
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TestActionEvent2 {
+    public static void main(String[] args) {
+        Frame frame = new Frame();
+        frame.setBounds(100, 100, 200, 200);
+        frame.pack();
+        frame.setVisible(true);
+        Button button1 = new Button("Start");
+        Button button2 = new Button("Stop");
+        frame.add(button1, BorderLayout.NORTH);
+        frame.add(button2, BorderLayout.SOUTH);
+        MyMonitor myMonitor = new MyMonitor();
+        button1.addActionListener(myMonitor);
+        button2.addActionListener(myMonitor);
+    }
+}
+
+
+class MyMonitor implements ActionListener{
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand()+"-->clicked");
+    }
+}
+```
+
+### 5.输入框
