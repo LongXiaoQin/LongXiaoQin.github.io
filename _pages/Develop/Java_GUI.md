@@ -449,4 +449,53 @@ class MyPaint extends Frame {
 }
 ```
 
+> ##### TIP
+>
+> **自动触发：** 当你创建一个 `Frame` 并调用 `setVisible(true)` 时，系统会自动请求该窗口的重绘。在重绘过程中，`Frame` 的 `paint` 方法会被调用。此时如果你重写了 `paint` 方法，系统会调用你重写的版本。
+{: .block-tip }
+
 ### 8.鼠标监听
+
+```java
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+public class TestMouseListener {
+    public static void main(String[] args) {
+        new MyMousePaint();
+    }
+}
+
+class MyMousePaint extends Frame{
+
+    ArrayList<Point> points;
+
+    MyMousePaint(){
+        points = new ArrayList<Point>();
+
+        setBounds(100, 100, 400, 400);
+
+        addMouseListener(new MyMouseListener());
+
+        setVisible(true);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.black);
+        for (Point point : points) {
+            g.fillOval(point.x, point.y, 10, 10);
+        }
+        repaint();
+    }
+
+    private class MyMouseListener extends MouseAdapter{
+        @Override
+        public void mousePressed(MouseEvent e) {
+            points.add(e.getPoint());
+        }
+    }
+}
+```
