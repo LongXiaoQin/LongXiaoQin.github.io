@@ -324,3 +324,129 @@ class MyMonitor implements ActionListener{
 ```
 
 ### 5.输入框
+
+```java
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TestTextField {
+    public static void main(String[] args) {
+        new MyFrame();
+    }
+}
+
+class MyFrame extends Frame {
+    public MyFrame(){
+        TextField textField = new TextField();
+        MyActionListener2 myActionListener2 = new MyActionListener2();
+        textField.addActionListener(myActionListener2);
+        textField.setEchoChar('*');
+        setBounds(100, 100, 100,100);
+        add(textField);
+        pack();
+        setVisible(true);
+    }
+}
+
+class MyActionListener2 implements ActionListener{
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        TextField textField = (TextField) e.getSource();
+        System.out.println(textField.getText());
+        textField.setText("");
+    }
+}
+```
+
+### 6.简易计算器
+
+```java
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TestCalc {
+    public static void main(String[] args) {
+        MyCalc myCalc = new MyCalc();
+        myCalc.LoadFrame();
+    }
+}
+
+
+class MyCalc extends Frame{
+    TextField num1, num2, num3;
+
+    public void LoadFrame(){
+        num1 = new TextField();
+        num2 = new TextField();
+        num3 = new TextField();
+        num1.setColumns(10);
+        num2.setColumns(10);
+        num3.setColumns(20);
+        Label label = new Label("+");
+        Button button = new Button("=");
+
+        button.addActionListener(new MyActionListener3(this));
+
+        this.setLayout(new FlowLayout(FlowLayout.CENTER));
+        add(num1);
+        add(label);
+        add(num2);
+        add(button);
+        add(num3);
+
+        pack();
+        setVisible(true);
+    }
+}
+
+class MyActionListener3 implements ActionListener{
+
+    MyCalc myCalc;
+
+    MyActionListener3(MyCalc myCalc){
+        this.myCalc = myCalc;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Integer num1 = Integer.parseInt(myCalc.num1.getText());
+        Integer num2 = Integer.parseInt(myCalc.num2.getText());
+
+        myCalc.num3.setText(""+(num1+num2));
+        myCalc.num1.setText("");
+        myCalc.num2.setText("");
+    }
+}
+```
+
+### 7.画笔
+
+```java
+import java.awt.*;
+
+public class TestPaint {
+    public static void main(String[] args) {
+        new MyPaint().LoadFrame();
+    }
+}
+
+
+class MyPaint extends Frame {
+    @Override
+    public void paint(Graphics g) {
+        g.setColor(Color.gray);
+        g.drawOval(100, 100, 100, 100);
+        g.drawRoundRect(100, 200, 100, 100, 1, 1);
+    }
+
+    public void LoadFrame(){
+        setBounds(100, 100, 500, 400);
+        setVisible(true);
+    }
+}
+```
+
+### 8.鼠标监听
