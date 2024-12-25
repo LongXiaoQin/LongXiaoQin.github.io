@@ -499,3 +499,66 @@ class MyMousePaint extends Frame{
     }
 }
 ```
+
+### 9.窗口监听
+
+```java
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class TestWindowListener {
+    public static void main(String[] args) {
+        new MyFrame("window listener");
+    }
+}
+
+class MyFrame extends Frame{
+    MyFrame(String title){
+        super(title);
+
+        setBounds(100, 100, 200, 200);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowActivated(WindowEvent e) {
+                System.out.println("window activated");
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("window closing");
+            }
+        });
+        setVisible(true);
+    }
+}
+```
+
+### 10.键盘监听
+
+```java
+import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class TestKeyboardListener {
+    public static void main(String[] args) {
+        new KeyFrame();
+    }
+}
+
+class KeyFrame extends Frame {
+    KeyFrame(){
+        setBounds(100, 100, 100,100);
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println(e.getKeyCode());
+            }
+        });
+        setVisible(true);
+    }
+}
+```
+
+# Swing
