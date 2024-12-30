@@ -562,3 +562,333 @@ class KeyFrame extends Frame {
 ```
 
 # Swing
+
+### 1.窗口
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJFrame {
+    public static void main(String[] args) {
+        new MyJFrame();
+    }
+}
+
+class MyJFrame extends JFrame{
+
+    MyJFrame() {
+        setBounds(100, 100, 100, 100);
+        Container container = getContentPane();
+        container.setBackground(Color.PINK);
+        JLabel jLabel = new JLabel("Jean");
+        jLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(jLabel);
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+}
+```
+
+### 2.弹窗
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJDialog {
+    public static void main(String[] args) {
+        new MyJFrame2();
+    }
+}
+
+class MyJFrame2 extends JFrame{
+
+    MyJFrame2(){
+        setBounds(100, 100, 400, 400);
+        Container container = getContentPane();
+        container.setBackground(Color.gray);
+        JButton jButton = new JButton("click me");
+        jButton.addActionListener(e -> new MyJDialog());
+        add(jButton);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+}
+
+class MyJDialog extends JDialog{
+
+    MyJDialog(){
+        setBounds(200, 200, 100,100);
+        Container container = getContentPane();
+        container.setBackground(Color.PINK);
+        JLabel jLabel = new JLabel("我是一个弹窗");
+        jLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(jLabel);
+        setVisible(true);
+    }
+}
+```
+
+### 3.图标
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestIcon {
+    public static void main(String[] args) {
+        new MyJFrame3();
+    }
+}
+
+class MyIcon extends JFrame implements Icon{
+
+    private int width, height;
+
+    MyIcon(int width, int height){
+        this.width = width;
+        this.height=height;
+    }
+
+    @Override
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+        g.setColor(Color.PINK);
+        g.drawOval(x, y, width, height);
+    }
+
+    @Override
+    public int getIconWidth() {
+        return width;
+    }
+
+    @Override
+    public int getIconHeight() {
+        return height;
+    }
+}
+
+class MyJFrame3 extends JFrame{
+
+    MyJFrame3(){
+        setBounds(100 ,100, 400, 400);
+        // 自己绘制icon
+        MyIcon myIcon = new MyIcon(100, 100);
+        JLabel jLabel1 = new JLabel("text-icon test", myIcon, SwingConstants.LEFT);
+
+        // 图片icon
+        ImageIcon imageIcon = new ImageIcon("src/com/jean/lesson04/test.jpg");
+        JLabel jLabel2 = new JLabel("image-icon test", imageIcon, SwingConstants.RIGHT);
+
+        add(jLabel1);
+        add(jLabel2);
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+}
+```
+
+### 4.面板
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJPanel {
+    public static void main(String[] args) {
+        new MyFrame4();
+    }
+}
+
+class MyFrame4 extends JFrame{
+
+    MyFrame4(){
+        Container container = getContentPane();
+
+        JPanel jPanel1 = new JPanel();
+        JPanel jPanel2 = new JPanel();
+        JPanel jPanel3 = new JPanel();
+        jPanel1.setLayout(new GridLayout(2, 2));
+        jPanel2.setLayout(new GridLayout(1, 2));
+        jPanel3.setLayout(new GridLayout(1, 2));
+
+
+        for(int i=0; i<4; i++){
+            jPanel1.add(new JButton("button1"));
+        }
+        for(int i=0; i<2; i++){
+            jPanel2.add(new JButton("button2"));
+        }
+        for(int i=0; i<2; i++){
+            jPanel3.add(new JButton("button3"));
+        }
+
+        container.setLayout(new GridLayout(3,1));
+        container.add(jPanel1);
+        container.add(jPanel2);
+        container.add(jPanel3);
+        setSize(200, 200);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+}
+```
+
+### 5.滚动条
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestScroll {
+    public static void main(String[] args) {
+        new MyFrame5();
+    }
+}
+
+
+class MyFrame5 extends JFrame{
+    MyFrame5(){
+        Container container = getContentPane();
+        TextArea testArea = new TextArea("Jean");
+
+        JScrollPane jScrollPane = new JScrollPane();
+        jScrollPane.add(testArea);
+        container.add(testArea);
+
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setBounds(100, 100, 100, 100);
+        setVisible(true);
+    }
+}
+```
+
+### 6.按钮
+
+#### 单选按钮
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJRadioButton {
+    public static void main(String[] args) {
+        new MyJFrame();
+    }
+}
+
+class MyJFrame extends JFrame{
+    MyJFrame(){
+        Container container = getContentPane();
+
+        JRadioButton jRadioButton1 = new JRadioButton("JRadioButton1");
+        JRadioButton jRadioButton2 = new JRadioButton("JRadioButton2");
+        JRadioButton jRadioButton3 = new JRadioButton("JRadioButton3");
+
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(jRadioButton1);
+        buttonGroup.add(jRadioButton2);
+        buttonGroup.add(jRadioButton3);
+
+        container.setLayout(new GridLayout(3, 1));
+        container.add(jRadioButton1);
+        container.add(jRadioButton2);
+        container.add(jRadioButton3);
+        pack();
+        setVisible(true);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+    }
+}
+```
+
+#### 复选框
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJCheckBox {
+    public static void main(String[] args) {
+        new MyJFrame6();
+    }
+}
+
+class MyJFrame6 extends JFrame{
+
+    MyJFrame6(){
+        Container container = getContentPane();
+
+        JCheckBox jCheckBox1 = new JCheckBox("box1");
+        JCheckBox jCheckBox2 = new JCheckBox("box2");
+
+        container.setLayout(new GridLayout(2, 1));
+        container.add(jCheckBox1);
+        container.add(jCheckBox2);
+
+        setBounds(100, 100, 400, 400);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+}
+```
+
+### 7.下拉框
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJCombobox {
+    public static void main(String[] args) {
+        new MyJFrame3();
+    }
+}
+
+class MyJFrame3 extends JFrame{
+    MyJFrame3(){
+        Container container = getContentPane();
+
+        setBounds(400, 400, 400, 400);
+
+        JComboBox<String> jComboBox = new JComboBox<String>();
+        jComboBox.addItem("list1");
+        jComboBox.addItem("list2");
+        jComboBox.addItem("list3");
+
+        container.add(jComboBox);
+
+        System.out.println(jComboBox.getSelectedItem());
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+}
+```
+
+### 8.列表框
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class TestJList {
+    public static void main(String[] args) {
+        new MyJFrame4();
+    }
+}
+
+class MyJFrame4 extends JFrame{
+    MyJFrame4(){
+        Container container = getContentPane();
+
+        String[] content = {"1", "2", "3"};
+        JList<String> jList = new JList<String>(content);
+        container.add(jList);
+
+        setBounds(400, 400, 400, 400);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+}
+```

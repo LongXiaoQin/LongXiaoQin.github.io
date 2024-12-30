@@ -12,7 +12,11 @@ layout: post
 
 ### 1.选择主题
 
-`http://jekyllthemes.org/`
+```http
+http://jekyllthemes.org/
+```
+
+
 
 ### 2.Fork
 
@@ -32,4 +36,7 @@ layout: post
 
 ### 4.本地测试
 
-`https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll`
+```http
+https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll
+```
+
