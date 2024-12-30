@@ -13,7 +13,8 @@ mermaid: true
 
 [参考链接2]: https://mermaid.js.org/syntax/flowchart.html
 
-# AWT
+AWT
+-------------
 
 ### 1.概述
 
@@ -561,7 +562,8 @@ class KeyFrame extends Frame {
 }
 ```
 
-# Swing
+Swing
+-------------
 
 ### 1.窗口
 
